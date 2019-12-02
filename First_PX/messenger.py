@@ -1,4 +1,3 @@
-import operator
 max = int(input())
 
 records = dict()
@@ -28,14 +27,12 @@ while True:
                 print(f'{receiver} reached the capacity!')
     elif tokens[0] == 'Empty':
         username = tokens[1]
-        if username == 'ALL':
+        if username == 'All':
             records = {}
         else:
             if username in records:
                 records.pop(username)
-records = dict(sorted(records.items(), key=operator.itemgetter(0), reverse=True))
+records = dict(sorted(records.items(), key=lambda x: (-x[1][1], x[0])))
 print(f'Users count: {len(records)}')
-for key, value in sorted(records.items()):
+for key, value in records.items():
     print(f'{key} - {sum(value)}')
-
-
