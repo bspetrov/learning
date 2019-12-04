@@ -13,6 +13,17 @@ while True:
         artist = f'{match.group(1)}{match.group(2)}'
         key = len(artist)
         song = f'{match.group(3)}'
+        print(artist)
         for i in artist:
-            final_artist = final_artist + (chr(ord(i)+key))
-#TODO ASCII Incrementation and logic!
+            if i.isalpha():
+                sum = ord(chr(key)) + ord(i)
+                if sum > ord('z'):
+                    n = sum - ord('z')
+                    final_artist = final_artist + (chr(ord('a') + n-1))
+                else:
+                    final_artist = final_artist + (chr(ord(i) + key))
+            else:
+                print(i)
+        print(final_artist)
+        final_artist = ''
+        #TODO -- Finish incrementation for artist!!!
