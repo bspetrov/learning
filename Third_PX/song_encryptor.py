@@ -13,7 +13,6 @@ while True:
         artist = f'{match.group(1)}{match.group(2)}'
         key = len(artist)
         song = f'{match.group(3)}'
-        print(artist)
         for i in artist:
             if i.isalpha():
                 sum = ord(chr(key)) + ord(i)
@@ -22,8 +21,22 @@ while True:
                     final_artist = final_artist + (chr(ord('a') + n-1))
                 else:
                     final_artist = final_artist + (chr(ord(i) + key))
-            else:
-                print(i)
-        print(final_artist)
+            elif i == ' ' or i == "'":
+                final_artist = final_artist + i
+        #TODO -- Finish incrementation for song!!!
+        for j in song:
+            if j.isalpha():
+                sum = ord(chr(key)) + ord(j)
+                if sum > ord('Z'):
+                    n = sum - ord('Z')
+                    final_song = final_song + (chr(ord('A') + n-1))
+                else:
+                    final_song = final_song + (chr(ord(j) + key))
+            elif j == ' ' or j == "'":
+                final_song = final_song + j
+        print(f'Successful encryption: {final_artist}@{final_song}')
+        final_song = ''
         final_artist = ''
-        #TODO -- Finish incrementation for artist!!!
+    else:
+        print(f'Invalid input!')
+
