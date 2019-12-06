@@ -7,7 +7,6 @@ def group_len(encrypted_sentence):
     for i in range(len(encrypted_sentence)):
         if encrypted_sentence[i] == '!':
             main_key = f'{encrypted_sentence[i-2]}{encrypted_sentence[i-1]}'
-            print(main_key)
-            break
+            return main_key
 
 group_len(encrypted_sentence)
